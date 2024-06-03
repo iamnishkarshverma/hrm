@@ -1,0 +1,53 @@
+<div class="container d-flex align-items-center justify-content-center h-100">
+    <div class="row rounded border-2 shadow">
+        <div class="px-0 col-12 col-md-6 d-flex align-items-center justify-content-center d-none d-md-none d-lg-block">
+            <img src="../../assets/images/Designer (6).png" class="" style="max-width: 100%;" alt="brand">
+        </div>
+        <div class="col-12 col-xs-12 col-md-12 col-lg-6  p-5">
+            <div class="p-4 d-flex align-items-center justify-content-center h-100">
+                <form [formGroup]="loginForm"  class="w-100">
+                    <div class="py-3">
+                        <p class="fs-1" style="color:#3f51b5;">Login</p>
+                        <p class="pt-3 text-secondary">Welcome to the HRM App. Please log in to access your account.</p>
+                    </div>
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput placeholder="Ex. hr@example.com" formControlName="email">
+                        @if(loginForm.get('email')?.hasError('required') && loginForm.get('email')?.touched){
+                        <mat-error>Email is required</mat-error>
+                        }
+                        @if(loginForm.get('email')?.hasError('email') && loginForm.get('email')?.touched){
+                        <mat-error>Please enter a valid email address</mat-error>
+                        }
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline" class="w-100">
+                        <mat-label>Password</mat-label>
+                        <input matInput formControlName="password" placeholder="Enter your password" required>
+                        @if(loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched){
+                            <mat-error>Password is required</mat-error>
+                        }
+                    </mat-form-field>
+                    <div class="mt-1">
+                        <!-- <button mat-raised-button color="primary" class="w-100" type="submit" [disabled]="loginForm.invalid">Submit</button> -->
+                        <button mat-raised-button color="primary" class="w-100" type="submit" (click)="login()">Submit</button>
+                    </div>
+
+                    <div class="row mt-4 px-3">
+                        <div class="col-12 col-xs-12 col-md-12 col-lg-6">
+                            <p class="text-secondary">New User?
+                                <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover"
+                                    href="/register">Register</a>
+                            </p>
+                        </div>
+                        <div class="col-12 col-xs-12 col-md-12 col-lg-6 text-lg-end">
+                            <a href="/forgotPassword"
+                                class="fst-italic link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Forgot
+                                your password?</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

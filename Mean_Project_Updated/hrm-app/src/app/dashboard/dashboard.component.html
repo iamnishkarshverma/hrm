@@ -1,0 +1,52 @@
+<mat-toolbar class="mat-elevation-z3 position-relative z-3" color="primary">
+    <button mat-icon-button (click)="collapsed = !collapsed;">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span>HRM App</span>
+</mat-toolbar>
+<mat-sidenav-container>
+    <mat-sidenav opened mode="side" [style.width]="sidenavWidth">
+        <div class="sidenav-header pt-3 text-center">
+            <img class="rounded-circle object-fit-cover mb-3" loading="eager" [width]="profilePicSize"
+                [height]="profilePicSize" src="./../../assets/images/profile-icon.jpg" alt="">
+            <div class="header-text " [class.hide-header-text]="collapsed">
+                <h2 class="m-0 lh-base fs-5">Your account</h2>
+                @if(isLoggedin){
+                <p class="m-0" style="font-size: 0.8rem;">logged</p>
+                }
+                @else {
+                <p class="m-0" style="font-size: 0.8rem;">Bharat Prajapat</p>
+                }
+            </div>
+        </div>
+
+        <mat-nav-list>
+            <a mat-list-item class="menu-item" routerLink="/dashboard/dashhome" routerLinkActive="selected-menu-item"
+                #rlaDashboard="routerLinkActive" [activated]="rlaDashboard.isActive">
+                <mat-icon [fontSet]="rlaDashboard.isActive ? 'material-icons' :'material-icons-outlined'"
+                    matListItemIcon>dashboard</mat-icon>
+                <span matListItemTitle *ngIf="!collapsed">Dashboard</span>
+            </a>
+            <a mat-list-item routerLink="/dashboard/attendance" class="menu-item" routerLinkActive="selected-menu-item"
+                #rlaAttendance="routerLinkActive" [activated]="rlaAttendance.isActive">
+                <mat-icon [fontSet]="rlaAttendance.isActive ? 'material-icons' :'material-icons-outlined'"
+                    matListItemIcon>today</mat-icon>
+                <span matListItemTitle *ngIf="!collapsed">Attendance</span>
+            </a>
+            <a mat-list-item routerLink="/dashboard/settings" class="menu-item" routerLinkActive="selected-menu-item"
+                #rlaSettings="routerLinkActive" [activated]="rlaSettings.isActive">
+                <mat-icon [fontSet]="rlaSettings.isActive ? 'material-icons' :'material-icons-outlined'"
+                    matListItemIcon>settings</mat-icon>
+                <span matListItemTitle *ngIf="!collapsed">Settings</span>
+            </a>
+            <a mat-list-item routerLink="/login" (click)="logout()">
+                <mat-icon matListItemIcon>logout</mat-icon>
+                <span matListItemTitle *ngIf="!collapsed">Logout</span>
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="p-4" [style.margin-left]="sidenavWidth">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

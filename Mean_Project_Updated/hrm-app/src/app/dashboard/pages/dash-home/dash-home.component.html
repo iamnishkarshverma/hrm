@@ -1,0 +1,94 @@
+<div class="row gutters-sm">
+  <div class="col-md-4 mb-3">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+          <img src="../../../../assets/images/profile-icon1.jpg" alt="Admin" class="rounded-circle" style="width: 9.374rem; max-inline-size:50%;
+          block-size: auto;
+          inline-size: 100%;">
+          @if(employee){
+          <div class="mt-3">
+            <h4>{{ employee.data.firstName + ' ' + employee.data.lastName }}</h4>
+            <p class="text-secondary mb-1">{{ employee.data.department | uppercase }}</p>
+            <p class="text-muted font-size-sm">{{ employee.data.address | titlecase }}</p>
+            <!-- <button class="btn btn-primary">Follow</button>
+                      <button class="btn btn-outline-primary">Message</button> -->
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+
+  </div>
+  @if(employee){
+  <div class="col-md-8">
+    <p class="h4 pb-2 mb-4 border-bottom border-secondary">Employee Information</p>
+    <div class="card mb-3" style="border-bottom: .25rem solid #5167e3 !important;">
+      <div class="card-body ">
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Department</p>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ employee.data.department }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Email</p>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ employee.data.email }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Phone</p>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ employee.data.mobile }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Gender</p>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ employee.data.gender | uppercase }}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Date Of Birth</p>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{ employee.data.dob| date:'dd-MM-yyyy' }}
+          </div>
+        </div>
+        <hr>
+
+        <div class="row">
+          <div class="col-sm-3">
+            <p class="mb-0">Check-In</p>
+          </div>
+          <div class="col-sm-3 text-secondary">
+            <button type="button" (click)="onCheckIn()"  class="btn btn-primary btn-sm">Mark</button>
+          </div>
+          <div class="col-sm-3 sm-border-top">
+            <p class="mb-0">Check-Out</p>
+          </div>
+          <div class="col-sm-3 text-secondary">
+            <button type="button" (click)="onCheckOut()"  class="btn btn-primary btn-sm">Mark</button>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+
+  <div class="container"></div>

@@ -1,0 +1,31 @@
+mat-sidenav-container {
+    height: calc(100vh - 64px);
+}
+
+.hide-header-text {
+    opacity: 0;
+    height: 0px !important;
+}
+
+mat-sidenav,
+mat-sidenav-content {
+    transition: all 500ms ease-in-out;
+}
+
+:host * {
+    transition: all 500ms ease-in-out;
+}
+
+.header-text {
+    height: 3rem;
+}
+
+.menu-item {
+    border-left: 5px solid;
+    border-left-color: rgba(0, 0, 0, 0);
+}
+
+.selected-menu-item {
+    border-left-color: blue;
+    background: rgba(0, 0, 0, 0.05);
+}
